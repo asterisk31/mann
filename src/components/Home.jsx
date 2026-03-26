@@ -79,35 +79,47 @@ const Home = () => {
   // }, [noteID, allNotes]); // Now safe to include allNotes
 
   return (
-    <div className="container">
-      {" "}
-      <div className="form-row">
-        {" "}
-        {/* Horizontal row for title and button */}
-        <input
-          type="text"
-          placeholder="enter title here"
-          value={title}
-          onChange={(e) => {
-            setTitle(e.target.value);
-            //console.log(e.target.value);
-          }}
-        />
-        <button onClick={create}>
-          {
-            noteID ? "Update Note" : "Create new" //conditional rendering
-          }
-        </button>
-      </div>
-      <div className="content-boxF">
-        {" "}
-        {/* Below for textarea */}
-        <textarea
-          value={value}
-          placeholder="Enter Text Here"
-          onChange={(e) => setValue(e.target.value)}
-          rows={20}
-        />
+    <div className="min-h-screen bg-gray-50 py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white rounded-lg shadow-md p-6">
+          {!noteID && (
+            <div className="text-center mb-6">
+              <h1 className="text-3xl font-bold text-gray-900 mb-2">मन</h1>
+              <p className="text-gray-600">Journalling/Logging</p>
+            </div>
+          )}
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            {noteID ? 'Edit Note' : 'Create New Note'}
+          </h2>
+
+          <div className="space-y-4">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="text"
+                placeholder="Enter title here"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
+              />
+              <button
+                onClick={create}
+                className="px-6 py-2 bg-purple-600 text-white rounded-md hover:bg-purple-700 focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 transition-colors font-medium flex items-center gap-2"
+              >
+                {noteID ? '✏️ Update Note' : '➕ Create Note'}
+              </button>
+            </div>
+
+            <div>
+              <textarea
+                value={value}
+                placeholder="Enter your note content here..."
+                onChange={(e) => setValue(e.target.value)}
+                rows={12}
+                className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors resize-vertical"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

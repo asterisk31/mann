@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import './App.css'
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Notes from './components/Notes';
@@ -9,7 +8,7 @@ const router=createBrowserRouter([
   {
     path:'/',
     element:
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <Navbar/>
       <Home/>
     </div>
@@ -17,7 +16,7 @@ const router=createBrowserRouter([
   {
     path: "/notes",
     element: 
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <Navbar/>
       <Notes/>
     </div>
@@ -25,7 +24,7 @@ const router=createBrowserRouter([
   {
     path: "/notes/:id",
     element:
-    <div>
+    <div className="min-h-screen bg-gray-50">
       <Navbar/>
       <ViewNote/>
     </div>
